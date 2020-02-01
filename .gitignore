@@ -1,4 +1,5 @@
 *.o
 libft/*
+!libft/.gitkeep
 .DS_Store
 ft_ssl
