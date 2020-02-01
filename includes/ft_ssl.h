@@ -15,6 +15,8 @@
 # include "../libft/libft.h"
 # include <fcntl.h>
 
+# define LEAKS 1
+
 typedef struct	s_flags
 {
 	int	h;
@@ -32,5 +34,7 @@ typedef struct	s_flags
 	int	deaths;
 	int	moves;
 }				t_flags;
+
+void		error(char *error_reason);
 
 #endif

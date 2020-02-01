@@ -1,3 +1,4 @@
 *.o
 .DS_Store
 ft_ssl
+libft/libft.a

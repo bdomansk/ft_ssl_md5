@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdomansk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/30 17:47:52 by bdomansk          #+#    #+#             */
-/*   Updated: 2018/10/30 17:47:54 by bdomansk         ###   ########.fr       */
+/*   Created: 2020/02/01 18:16:07 by bdomansk          #+#    #+#             */
+/*   Updated: 2020/02/01 18:16:09 by bdomansk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
-void
-
-int			main(int argc, char **argv)
+void	error(char *error_reason)
 {
-	check_input(argc, argv);
-	return (0);
+	ft_printf("%s\n", error_reason);
+	if (LEAKS)
+		system("leaks ft_ssl");
+	exit(1);
 }
