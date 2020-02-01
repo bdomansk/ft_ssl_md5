@@ -12,7 +12,11 @@
 
 #include "ft_ssl.h"
 
-void
+void		check_input(int argc, char **argv)
+{
+	if (argc == 1)
+	
+}
 
 int			main(int argc, char **argv)
 {
