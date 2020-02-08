@@ -16,25 +16,31 @@
 # include <fcntl.h>
 
 # define LEAKS 1
+# define NUMBER_OF_ALGORITHMS 2
+
+typedef struct	s_algorithm
+{
+	char		*name;
+	void		(*function)(void*);
+}				t_algorithm;
 
 typedef struct	s_flags
 {
-	int	h;
-	int l;
-	int	c;
-	int v;
-	int	m;
-	int	n;
-	int	dump;
-	int	dump_value;
-	int	dump_bytes;
-	int	lives;
-	int	cycles;
-	int	ops;
-	int	deaths;
-	int	moves;
+	char	p;
+	char	q;
+	char	r;
+	char	s;
 }				t_flags;
 
-void		error(char *error_reason);
+typedef struct	s_info
+{
+	t_algorithm	*algorithms;
+	t_flags		*flags;
+}				t_info;
+
+void			error(char *error_reason);
+t_info			*init_info();
+void			md5(void *data);
+void			sha256(void *data);
 
 #endif

@@ -14,7 +14,7 @@ NAME = ../ft_ssl
 LIB = ../libft/libft.a
 LIBDIR = ../libft
 FLAGS = -Wall -Wextra -Werror 
-FT_SSL_SRC = main.c error.c
+FT_SSL_SRC = main.c error.c init_info.c md5.c sha256.c
 FT_SSL_OBJ = $(FT_SSL_SRC:.c=.o)
 HEADER = ../includes
 DEL = /bin/rm -f
