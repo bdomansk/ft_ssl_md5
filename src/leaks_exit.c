@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sha256.c                                           :+:      :+:    :+:   */
+/*   leaks_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdomansk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/08 16:55:39 by bdomansk          #+#    #+#             */
-/*   Updated: 2020/02/08 16:55:42 by bdomansk         ###   ########.fr       */
+/*   Created: 2020/02/15 20:16:38 by bdomansk          #+#    #+#             */
+/*   Updated: 2020/02/15 20:16:41 by bdomansk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
-void	sha256(void *data)
+void	leaks_exit(int code)
 {
-	t_info	*info;
-
-	info = data;
-	ft_printf("Number - %s\n", "sha256");
+	if (LEAKS)
+		system("leaks ft_ssl");
+	exit(code);
 }

@@ -12,20 +12,13 @@
 
 #include "ft_ssl.h"
 
-static void		check_input(int argc, char **argv)
-{
-	if (argc == 1)
-		error("usage: ./ft_ssl md5|sha256 [flags] [file_name]");
-	ft_printf("%s", argv[1]);
-}
-
-int				main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_info	*info;
 
-	info = init_info();
-	ft_printf("Number - %s\n", info->algorithms[0].name);
-	check_input(argc, argv);
-	md5(info);
-	return (0);
+	info = init_info(argc, argv);
+	check_input(info);
+	info->algorithm->function(info);
+	// if info->stdin 
+	leaks_exit(0);
 }

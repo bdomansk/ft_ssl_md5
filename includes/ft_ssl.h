@@ -34,12 +34,18 @@ typedef struct	s_flags
 
 typedef struct	s_info
 {
+	int			argc;
+	char		**argv;
+	int			stdin;
 	t_algorithm	*algorithms;
+	t_algorithm	*algorithm;
 	t_flags		*flags;
 }				t_info;
 
 void			error(char *error_reason);
-t_info			*init_info();
+void			leaks_exit(int code);
+t_info			*init_info(int argc, char **argv);
+void			check_input(t_info *info);
 void			md5(void *data);
 void			sha256(void *data);
 

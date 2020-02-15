@@ -15,7 +15,5 @@
 void	error(char *error_reason)
 {
 	ft_printf("%s\n", error_reason);
-	if (LEAKS)
-		system("leaks ft_ssl");
-	exit(1);
+	leaks_exit(1);
 }

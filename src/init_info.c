@@ -38,12 +38,16 @@ static t_algorithm	*init_algorithms(void)
 	return (algorithms);
 }
 
-t_info				*init_info(void)
+t_info				*init_info(int argc, char **argv)
 {
 	t_info		*info;
 
 	info = (t_info*)malloc(sizeof(t_info));
+	info->argc = argc;
+	info->argv = argv;
+	info->stdin = 0;
 	info->flags = init_flags();
 	info->algorithms = init_algorithms();
+	info->algorithm = NULL;
 	return (info);
 }
