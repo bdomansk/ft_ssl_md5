@@ -19,6 +19,16 @@ int	main(int argc, char **argv)
 	info = init_info(argc, argv);
 	check_input(info);
 	info->algorithm->function(info);
+	//tmp
+	t_file *files;
+
+	files = info->files;
+		while (files) 
+		{
+			ft_printf("%s\n", files->name);
+			files = files->next;
+		}
+	//           ./ft_ssl md5 -s 1 Makefile Что-то не так  - (null)
 	// if info->stdin 
 	leaks_exit(0);
 }

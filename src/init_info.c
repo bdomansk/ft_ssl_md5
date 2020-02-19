@@ -49,5 +49,6 @@ t_info				*init_info(int argc, char **argv)
 	info->flags = init_flags();
 	info->algorithms = init_algorithms();
 	info->algorithm = NULL;
+	info->files = NULL;
 	return (info);
 }

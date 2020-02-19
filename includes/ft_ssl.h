@@ -24,12 +24,21 @@ typedef struct	s_algorithm
 	void		(*function)(void*);
 }				t_algorithm;
 
+typedef struct	s_file
+{
+	char			*name;
+	char			*hash;
+	char			*error;
+	int				string;
+	struct s_file	*next;
+}				t_file;
+
 typedef struct	s_flags
 {
-	char	p;
-	char	q;
-	char	r;
-	char	s;
+	int			p;
+	int			q;
+	int			r;
+	int			s;
 }				t_flags;
 
 typedef struct	s_info
@@ -39,6 +48,7 @@ typedef struct	s_info
 	int			stdin;
 	t_algorithm	*algorithms;
 	t_algorithm	*algorithm;
+	t_file		*files;
 	t_flags		*flags;
 }				t_info;
 
@@ -46,6 +56,7 @@ void			error(char *error_reason);
 void			leaks_exit(int code);
 t_info			*init_info(int argc, char **argv);
 void			check_input(t_info *info);
+void			check_arguments(t_info *info);
 void			md5(void *data);
 void			sha256(void *data);
 

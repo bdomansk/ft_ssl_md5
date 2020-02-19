@@ -30,6 +30,23 @@ static int check_algorithm(t_info *info, char *algorithm)
 	return (0);
 }
 
+static void print_algorithms_list(t_algorithm *algorithms)
+{
+	int	i;
+
+	i = 0;
+	ft_printf("Wrong algorithm name. Algorithms list: ");
+	while (i < NUMBER_OF_ALGORITHMS)
+	{
+		if (i == 0)
+			ft_printf("%s", algorithms[i].name);
+		else 
+			ft_printf("|%s", algorithms[i].name);
+		i++;
+	}
+	ft_printf("\n");
+}
+
 static void	get_algorithm_from_stdin(t_info *info)
 {
 	char *buf;
@@ -40,7 +57,7 @@ static void	get_algorithm_from_stdin(t_info *info)
 		if (get_next_line(0, &buf))
 		{
 			if (ft_strlen(buf) && !check_algorithm(info, buf))
-				ft_printf("algorithms list: md5|sha256\n" );
+				print_algorithms_list(info->algorithms);
 		} else {
 			ft_strdel(&buf);
 			leaks_exit(0);
@@ -49,25 +66,15 @@ static void	get_algorithm_from_stdin(t_info *info)
 	}
 }
 
-static void	check_arguments(t_info *info)
-{
-	int i;
-
-	i = 2;
-	while (i < info->argc)
-	{
-		//if
-		i++; 
-	}
-}
-
 void		check_input(t_info *info)
 {
 	if (info->argc == 1)
 		get_algorithm_from_stdin(info);
 	else {
-		if (!check_algorithm(info, info->argv[1]))
-			error("Wrong algorithm name");
+		if (!check_algorithm(info, info->argv[1])) {
+			print_algorithms_list(info->algorithms);
+			error(NULL);
+		}
 		if (info->argc > 2) 
 			check_arguments(info);
 		else
