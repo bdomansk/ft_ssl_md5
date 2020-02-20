@@ -12,7 +12,7 @@
 
 #include "ft_ssl.h"
 
-static t_flags	*init_flags(void)
+static t_flags		*init_flags(void)
 {
 	t_flags	*flags;
 

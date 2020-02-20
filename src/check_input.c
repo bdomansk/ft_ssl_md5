@@ -12,7 +12,7 @@
 
 #include "ft_ssl.h"
 
-static int check_algorithm(t_info *info, char *algorithm)
+static int	check_algorithm(t_info *info, char *algorithm)
 {
 	t_algorithm	*algorithms;
 	int			i;
@@ -21,7 +21,8 @@ static int check_algorithm(t_info *info, char *algorithm)
 	algorithms = info->algorithms;
 	while (i < NUMBER_OF_ALGORITHMS)
 	{
-		if (!ft_strcmp(algorithm, algorithms[i].name)) {
+		if (!ft_strcmp(algorithm, algorithms[i].name))
+		{
 			info->algorithm = &algorithms[i];
 			return (1);
 		}
@@ -30,7 +31,7 @@ static int check_algorithm(t_info *info, char *algorithm)
 	return (0);
 }
 
-static void print_algorithms_list(t_algorithm *algorithms)
+static void	print_algorithms_list(t_algorithm *algorithms)
 {
 	int	i;
 
@@ -40,7 +41,7 @@ static void print_algorithms_list(t_algorithm *algorithms)
 	{
 		if (i == 0)
 			ft_printf("%s", algorithms[i].name);
-		else 
+		else
 			ft_printf("|%s", algorithms[i].name);
 		i++;
 	}
@@ -52,13 +53,16 @@ static void	get_algorithm_from_stdin(t_info *info)
 	char *buf;
 
 	info->stdin = 1;
-	while (!info->algorithm) {
+	while (!info->algorithm)
+	{
 		ft_printf("SSL> ");
 		if (get_next_line(0, &buf))
 		{
 			if (ft_strlen(buf) && !check_algorithm(info, buf))
 				print_algorithms_list(info->algorithms);
-		} else {
+		}
+		else
+		{
 			ft_strdel(&buf);
 			leaks_exit(0);
 		}
@@ -70,12 +74,14 @@ void		check_input(t_info *info)
 {
 	if (info->argc == 1)
 		get_algorithm_from_stdin(info);
-	else {
-		if (!check_algorithm(info, info->argv[1])) {
+	else
+	{
+		if (!check_algorithm(info, info->argv[1]))
+		{
 			print_algorithms_list(info->algorithms);
 			error(NULL);
 		}
-		if (info->argc > 2) 
+		if (info->argc > 2)
 			check_arguments(info);
 		else
 			info->stdin = 1;

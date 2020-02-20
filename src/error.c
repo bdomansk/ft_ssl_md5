@@ -13,7 +13,8 @@
 #include "ft_ssl.h"
 
 void	error(char *error_reason)
-{	if (error_reason)
+{
+	if (error_reason)
 		ft_printf("%s\n", error_reason);
 	leaks_exit(1);
 }

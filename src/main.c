@@ -12,6 +12,14 @@
 
 #include "ft_ssl.h"
 
+static void stdin(t_info *info)
+{
+	info->flags->q = 1;
+	read_data(0, info);
+	info->algorithm->function(info);
+	output_hash(info);
+}
+
 int	main(int argc, char **argv)
 {
 	t_info	*info;
@@ -19,6 +27,8 @@ int	main(int argc, char **argv)
 	info = init_info(argc, argv);
 	check_input(info);
 	info->algorithm->function(info);
+	if (info->stdin)
+		stdin(info);
 	//tmp
 	t_file *files;
 
@@ -28,7 +38,6 @@ int	main(int argc, char **argv)
 			ft_printf("%s\n", files->name);
 			files = files->next;
 		}
-	//           ./ft_ssl md5 -s 1 Makefile Что-то не так  - (null)
 	// if info->stdin 
 	leaks_exit(0);
 }

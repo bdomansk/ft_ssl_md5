@@ -27,8 +27,6 @@ typedef struct	s_algorithm
 typedef struct	s_file
 {
 	char			*name;
-	char			*hash;
-	char			*error;
 	int				string;
 	struct s_file	*next;
 }				t_file;

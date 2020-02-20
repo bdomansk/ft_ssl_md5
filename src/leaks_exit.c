@@ -15,6 +15,9 @@
 void	leaks_exit(int code)
 {
 	if (LEAKS)
+	{
+		ft_printf("\n ________________ LEAKS CHECK _______________\n");
 		system("leaks ft_ssl");
+	}
 	exit(code);
 }
