@@ -17,5 +17,5 @@ void	md5(void *data)
 	t_info	*info;
 
 	info = data;
-	ft_printf("Nfsfsfsfsfsumber - %s\n", info->algorithms[0].name);
+	info->result = "md5_sfskfoskfosdfsfs";
 }

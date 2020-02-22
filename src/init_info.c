@@ -53,5 +53,6 @@ t_info				*init_info(int argc, char **argv)
 	info->files = NULL;
 	info->buffer = NULL;
 	info->error = NULL;
+	info->result = NULL;
 	return (info);
 }

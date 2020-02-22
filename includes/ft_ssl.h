@@ -14,6 +14,7 @@
 # define FT_SSL_H
 # include "../libft/libft.h"
 # include <fcntl.h>
+# include <errno.h>
 
 # define LEAKS 1
 # define NUMBER_OF_ALGORITHMS 2
@@ -44,12 +45,13 @@ typedef struct	s_info
 	int			argc;
 	char		**argv;
 	int			stdin;
-	int			length;
+	size_t		length;
 	t_algorithm	*algorithms;
 	t_algorithm	*algorithm;
 	t_file		*files;
 	t_flags		*flags;
 	char		*buffer;
+	char		*result;
 	char		*error;
 }				t_info;
 
@@ -58,7 +60,10 @@ void			leaks_exit(int code);
 t_info			*init_info(int argc, char **argv);
 void			check_input(t_info *info);
 void			check_arguments(t_info *info);
-void			read_file(t_info *info, t_file *file);
+void			read_file(t_info *info);
+void			read_stdin(t_info *info);
+void			output_hash(t_info *info);
+void			free_file_info(t_info *info);
 void			md5(void *data);
 void			sha256(void *data);
 

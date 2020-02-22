@@ -12,32 +12,28 @@
 
 #include "ft_ssl.h"
 
-static void	stdin(t_info *info)
+static void	ft_stdin(t_info *info)
 {
-	info->flags->q = 1;
-	//read_data(0, info);
+	// read_stdin(info);
 	info->algorithm->function(info);
-	//output_hash(info); // учитывает флаги -r и  -q
+	output_hash(info);
+	info->flags->p = 0;
+	info->stdin = 0;
 }
 
-static void	parse_files(t_info *info)
+static void	parse_file(t_info *info)
 {
-	t_file *file;
-
 	if (info->flags->p)
-		stdin(info);
-	file = info->files;
-	while (file)
-	{
-		if (file->string)
-			info->buffer = ft_strdup(file->name);
-		else
-			read_file(info, file);
-		info->algorithm->function(info);
-		//output_hash(info);
-		//free_file_info(info); // внутри ft_strdel(info->buffer) + free t_file;
-		file = file->next;
-	}
+		ft_stdin(info);
+	if (info->files->string)
+		info->buffer = ft_strdup(info->files->name);
+	else
+		read_file(info);
+	info->algorithm->function(info);
+	output_hash(info);
+	free_file_info(info);
+	if (info->files)
+		parse_file(info);
 }
 
 int			main(int argc, char **argv)
@@ -47,8 +43,8 @@ int			main(int argc, char **argv)
 	info = init_info(argc, argv);
 	check_input(info);
 	if (info->stdin)
-		stdin(info);
+		ft_stdin(info);
 	else
-		parse_files(info);
+		parse_file(info);
 	leaks_exit(0);
 }
