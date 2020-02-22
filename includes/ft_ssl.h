@@ -53,6 +53,8 @@ typedef struct	s_info
 	char		*buffer;
 	char		*result;
 	char		*error;
+	uint32_t	var_h[8];
+	uint32_t	*data;
 }				t_info;
 
 void			error(char *error_reason);

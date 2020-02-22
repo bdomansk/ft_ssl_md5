@@ -14,11 +14,14 @@
 
 static void	ft_stdin(t_info *info)
 {
-	// read_stdin(info);
+	read_stdin(info);
 	info->algorithm->function(info);
 	output_hash(info);
 	info->flags->p = 0;
 	info->stdin = 0;
+	ft_strdel(&info->buffer);
+	info->buffer = ft_sprintf("%s - %s", "1", "2");
+	ft_printf("%s", info->buffer);
 }
 
 static void	parse_file(t_info *info)

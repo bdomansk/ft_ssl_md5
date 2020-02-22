@@ -40,6 +40,7 @@ typedef struct	s_specifiers
 t_specifiers	*ft_find_specifiers(const char *f, int *i);
 
 int				ft_printf(const char *format, ...);
+char			*ft_sprintf(const char *format, ...);
 
 char			*ft_select_type(t_specifiers *specifiers, va_list ap, int *k);
 char			*ft_uitoa(uintmax_t digit, t_specifiers *s);

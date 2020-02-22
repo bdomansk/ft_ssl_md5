@@ -46,5 +46,19 @@ void		read_file(t_info *info)
 
 void		read_stdin(t_info *info)
 {
-	ft_printf("%d", info->stdin);
+	char	*temp_buffer;
+	char	*buffer;
+
+	buffer = ft_strnew(1);
+	info->buffer = ft_strnew(1);
+	while (1)
+	{
+		temp_buffer = info->buffer;
+		if (read(0, buffer, 1) == 0)
+			break ;
+		info->length++;
+		info->buffer = ft_strjoin(temp_buffer, buffer);
+		ft_strdel(&temp_buffer);
+	}
+	ft_strdel(&buffer);
 }

@@ -33,6 +33,5 @@ void		output_hash(t_info *info)
 		else
 			ft_printf("%s (%s) = %s\n", info->algorithm->name,
 				info->files->name, info->result);
-			
 	}
 }

@@ -71,3 +71,16 @@ int			ft_printf(const char *format, ...)
 	}
 	return (0);
 }
+
+char		*ft_sprintf(const char *format, ...)
+{
+	va_list ap;
+	char	*buf;
+	int		size;
+
+	va_start(ap, format);
+	size = 0;
+	buf = ft_parse_format(format, ap, &size);
+	va_end(ap);
+	return (buf);
+}
