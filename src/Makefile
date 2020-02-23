@@ -16,7 +16,8 @@ LIBDIR = ../libft
 FLAGS = -Wall -Wextra -Werror 
 FT_SSL_SRC = main.c error.c init_info.c md5.c sha256.c check_input.c \
 	leaks_exit.c check_arguments.c read_file.c output_hash.c swap_bits.c \
-	free_file_info.c sha256_handler.c rotr.c md5_handler.c sha224.c 
+	free_file_info.c sha256_handler.c rotr.c md5_handler.c sha224.c  \
+	sha512.c sha512_handler.c
 FT_SSL_OBJ = $(FT_SSL_SRC:.c=.o)
 HEADER = ../includes
 DEL = /bin/rm -f

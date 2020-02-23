@@ -37,6 +37,8 @@ static t_algorithm	*init_algorithms(void)
 	algorithms[1].function = sha256;
 	algorithms[2].name = "sha224";
 	algorithms[2].function = sha224;
+	algorithms[2].name = "sha512";
+	algorithms[2].function = sha512;
 	return (algorithms);
 }
 
@@ -57,5 +59,6 @@ t_info				*init_info(int argc, char **argv)
 	info->error = NULL;
 	info->result = NULL;
 	info->block32 = (t_block_32*)malloc(sizeof(t_block_32));
+	info->block64 = (t_block_64*)malloc(sizeof(t_block_64));
 	return (info);
 }
