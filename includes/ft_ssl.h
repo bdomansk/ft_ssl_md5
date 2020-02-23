@@ -17,7 +17,7 @@
 # include <errno.h>
 
 # define LEAKS 1
-# define NUMBER_OF_ALGORITHMS 2
+# define NUMBER_OF_ALGORITHMS 3
 
 typedef struct	s_algorithm
 {
@@ -93,9 +93,13 @@ void			md5(void *data);
 void			md5_move_blocks(t_info *info, uint32_t position);
 void			md5_set_result(t_info *info);
 void			sha256(void *data);
+void			sha256_main_cycle(t_info *info);
+void			sha256_fill_message(t_info *info);
+void			sha256_fill_message2(t_info *info, uint32_t length);
 void			sha256_fill_block(t_info *info, int position);
 void			sha256_move_blocks(t_info *info);
 void			sha256_set_result(t_info *info);
+void			sha224(void *data);
 uint32_t		swap_bits_32(uint32_t var);
 uint32_t		swap_bits_md5(uint32_t	var);
 uint32_t		rotr32(uint32_t word, uint32_t offset);

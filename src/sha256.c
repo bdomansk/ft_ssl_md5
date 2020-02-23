@@ -24,7 +24,7 @@ static void	sha256_init_var_h(t_info *info)
 	info->var_h[7] = 0x5be0cd19;
 }
 
-static void	sha256_fill_message2(t_info *info, uint32_t length)
+void	sha256_fill_message2(t_info *info, uint32_t length)
 {
 	size_t		i;
 
@@ -45,7 +45,7 @@ static void	sha256_fill_message2(t_info *info, uint32_t length)
 	info->data[length / 32 + 1] = (uint32_t)info->length * 8;
 }
 
-static void	sha256_fill_message(t_info *info)
+void	sha256_fill_message(t_info *info)
 {
 	uint32_t	message_length;
 
@@ -58,7 +58,7 @@ static void	sha256_fill_message(t_info *info)
 		sha256_fill_message2(info, message_length);
 }
 
-static void	sha256_main_cycle(t_info *info)
+void	sha256_main_cycle(t_info *info)
 {
 	size_t	i;
 

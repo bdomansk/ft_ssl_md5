@@ -35,6 +35,8 @@ static t_algorithm	*init_algorithms(void)
 	algorithms[0].function = md5;
 	algorithms[1].name = "sha256";
 	algorithms[1].function = sha256;
+	algorithms[2].name = "sha224";
+	algorithms[2].function = sha224;
 	return (algorithms);
 }
 
