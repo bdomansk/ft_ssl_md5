@@ -54,5 +54,6 @@ t_info				*init_info(int argc, char **argv)
 	info->buffer = NULL;
 	info->error = NULL;
 	info->result = NULL;
+	info->block32 = (t_block_32*)malloc(sizeof(t_block_32));
 	return (info);
 }

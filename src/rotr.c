@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_file_info.c                                   :+:      :+:    :+:   */
+/*   rotr.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdomansk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/22 16:35:55 by bdomansk          #+#    #+#             */
-/*   Updated: 2020/02/22 16:35:57 by bdomansk         ###   ########.fr       */
+/*   Created: 2020/02/23 14:31:36 by bdomansk          #+#    #+#             */
+/*   Updated: 2020/02/23 14:31:38 by bdomansk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
-void	free_file_info(t_info *info)
+uint32_t	rotr32(uint32_t word, uint32_t offset)
 {
-	t_file	*file;
+	uint32_t	temp1;
+	uint32_t	temp0;
 
-	file = info->files;
-	info->files = file->next;
-	free(file);
-	free(info->result);
-	ft_strdel(&info->buffer);
-	info->buffer = NULL;
-	info->error = NULL;
-	info->result = NULL;
-	info->length = 0;
+	temp0 = word >> offset;
+	temp1 = word << (32 - offset);
+	return (temp0 | temp1);
 }

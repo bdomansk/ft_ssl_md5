@@ -40,6 +40,19 @@ typedef struct	s_flags
 	int			s;
 }				t_flags;
 
+typedef struct	s_block_32
+{
+	uint32_t		a;
+	uint32_t		b;
+	uint32_t		c;
+	uint32_t		d;
+	uint32_t		e;
+	uint32_t		f;
+	uint32_t		g;
+	uint32_t		h;
+	uint32_t		*w;
+}				t_block_32;
+
 typedef struct	s_info
 {
 	int			argc;
@@ -55,6 +68,13 @@ typedef struct	s_info
 	char		*error;
 	uint32_t	var_h[8];
 	uint32_t	*data;
+	size_t		size;
+	t_block_32	*block32;
+	uint32_t	temp0;
+	uint32_t	temp1;
+	uint32_t	temp2;
+	uint32_t	temp3;
+	uint32_t	temp4;
 }				t_info;
 
 void			error(char *error_reason);
@@ -68,5 +88,10 @@ void			output_hash(t_info *info);
 void			free_file_info(t_info *info);
 void			md5(void *data);
 void			sha256(void *data);
+void			sha256_fill_block(t_info *info, int position);
+void			sha256_move_blocks(t_info *info);
+void			sha256_set_result(t_info *info);
+uint32_t		swap_bits_32(uint32_t var);
+uint32_t		rotr32(uint32_t word, uint32_t offset);
 
 #endif

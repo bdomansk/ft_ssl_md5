@@ -1,0 +1,23 @@
+sha256 (some_hipster_ipsum) = 9e390d34a25abe646314077d5361254f213cc729839ddc285a98151daf0aa8bf
+
+ ________________ LEAKS CHECK _______________
+Process:         ft_ssl [9668]
+Path:            /Volumes/VOLUME/*/ft_ssl
+Load Address:    0x10566b000
+Identifier:      ft_ssl
+Version:         ???
+Code Type:       X86-64
+Parent Process:  zsh [81160]
+
+Date/Time:       2020-02-23 17:50:05.813 +0200
+Launch Time:     2020-02-23 17:50:05.472 +0200
+OS Version:      Mac OS X 10.14.5 (18F132)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 11.3 (11C29)
+----
+
+leaks Report Version: 4.0
+Process 9668: 164 nodes malloced for 14 KB
+Process 9668: 0 leaks for 0 total leaked bytes.
+

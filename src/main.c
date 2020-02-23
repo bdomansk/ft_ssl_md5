@@ -20,8 +20,6 @@ static void	ft_stdin(t_info *info)
 	info->flags->p = 0;
 	info->stdin = 0;
 	ft_strdel(&info->buffer);
-	info->buffer = ft_sprintf("%s - %s", "1", "2");
-	ft_printf("%s", info->buffer);
 }
 
 static void	parse_file(t_info *info)
@@ -29,7 +27,10 @@ static void	parse_file(t_info *info)
 	if (info->flags->p)
 		ft_stdin(info);
 	if (info->files->string)
+	{
 		info->buffer = ft_strdup(info->files->name);
+		info->length = ft_strlen(info->files->name);
+	}
 	else
 		read_file(info);
 	info->algorithm->function(info);

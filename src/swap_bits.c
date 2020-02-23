@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_file_info.c                                   :+:      :+:    :+:   */
+/*   swap_bits.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdomansk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/22 16:35:55 by bdomansk          #+#    #+#             */
-/*   Updated: 2020/02/22 16:35:57 by bdomansk         ###   ########.fr       */
+/*   Created: 2020/02/23 12:24:46 by bdomansk          #+#    #+#             */
+/*   Updated: 2020/02/23 12:24:48 by bdomansk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
-void	free_file_info(t_info *info)
+uint32_t	swap_bits_32(uint32_t var)
 {
-	t_file	*file;
+	uint32_t	result;
+	uint32_t	var_1;
+	uint32_t	var_2;
+	uint32_t	var_3;
+	uint32_t	var_4;
 
-	file = info->files;
-	info->files = file->next;
-	free(file);
-	free(info->result);
-	ft_strdel(&info->buffer);
-	info->buffer = NULL;
-	info->error = NULL;
-	info->result = NULL;
-	info->length = 0;
+	var_1 = (var >> 24) & 0xff;
+	var_2 = (var << 8) & 0xff0000;
+	var_3 = (var >> 8) & 0xff00;
+	var_4 = (var << 24) & 0xff000000;
+	result = var_1 | var_2 | var_3 | var_4;
+	return (result);
 }
