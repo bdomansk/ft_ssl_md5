@@ -21,3 +21,13 @@ uint32_t	rotr32(uint32_t word, uint32_t offset)
 	temp1 = word << (32 - offset);
 	return (temp0 | temp1);
 }
+
+uint32_t	left_rotr32(uint32_t word, uint32_t offset)
+{
+	uint32_t	temp1;
+	uint32_t	temp0;
+
+	temp0 = word << offset;
+	temp1 = word >> (32 - offset);
+	return (temp0 | temp1);
+}

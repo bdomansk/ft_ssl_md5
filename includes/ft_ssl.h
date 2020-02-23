@@ -68,6 +68,8 @@ typedef struct	s_info
 	char		*error;
 	uint32_t	var_h[8];
 	uint32_t	*data;
+	uint8_t		*data8;
+	uint64_t	*data64;
 	size_t		size;
 	t_block_32	*block32;
 	uint32_t	temp0;
@@ -75,6 +77,7 @@ typedef struct	s_info
 	uint32_t	temp2;
 	uint32_t	temp3;
 	uint32_t	temp4;
+	uint32_t	message_length;
 }				t_info;
 
 void			error(char *error_reason);
@@ -87,11 +90,15 @@ void			read_stdin(t_info *info);
 void			output_hash(t_info *info);
 void			free_file_info(t_info *info);
 void			md5(void *data);
+void			md5_move_blocks(t_info *info, uint32_t position);
+void			md5_set_result(t_info *info);
 void			sha256(void *data);
 void			sha256_fill_block(t_info *info, int position);
 void			sha256_move_blocks(t_info *info);
 void			sha256_set_result(t_info *info);
 uint32_t		swap_bits_32(uint32_t var);
+uint32_t		swap_bits_md5(uint32_t	var);
 uint32_t		rotr32(uint32_t word, uint32_t offset);
+uint32_t		left_rotr32(uint32_t word, uint32_t offset);
 
 #endif
