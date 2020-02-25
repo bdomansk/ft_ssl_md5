@@ -12,6 +12,16 @@
 
 #include "ft_ssl.h"
 
+void	free_data(t_info *info)
+{
+	if (info->data)
+		free(info->data);
+	if (info->data8)
+		free(info->data8);
+	if (info->data64)
+		free(info->data64);
+}
+
 void	free_file_info(t_info *info)
 {
 	t_file	*file;
@@ -25,4 +35,5 @@ void	free_file_info(t_info *info)
 	info->error = NULL;
 	info->result = NULL;
 	info->length = 0;
+	free_data(info);
 }

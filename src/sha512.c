@@ -24,7 +24,7 @@ static void	sha512_init_var_h(t_info *info)
 	info->v_h[7] = 0x5be0cd19137e2179;
 }
 
-void	sha512_fill_message2(t_info *info, uint64_t length)
+void		sha512_fill_message2(t_info *info, uint64_t length)
 {
 	size_t		i;
 
@@ -45,7 +45,7 @@ void	sha512_fill_message2(t_info *info, uint64_t length)
 	info->data64[length / 64 + 1] = (uint64_t)info->length * 8;
 }
 
-void	sha512_fill_message(t_info *info)
+void		sha512_fill_message(t_info *info)
 {
 	uint64_t	message_length;
 
@@ -58,7 +58,7 @@ void	sha512_fill_message(t_info *info)
 		sha512_fill_message2(info, message_length);
 }
 
-void	sha512_main_cycle(t_info *info)
+void		sha512_main_cycle(t_info *info)
 {
 	size_t	i;
 

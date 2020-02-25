@@ -109,7 +109,7 @@ void		sha512_set_result(t_info *info)
 {
 	char *pattern;
 
-	pattern = "%016llx%016llx%016llx%016llx%016llx%016llx%016llx%016llx",
+	pattern = "%016llx%016llx%016llx%016llx%016llx%016llx%016llx%016llx";
 	info->result = ft_sprintf(pattern,
 		info->v_h[0],
 		info->v_h[1],

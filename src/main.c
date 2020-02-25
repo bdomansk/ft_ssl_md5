@@ -19,7 +19,7 @@ static void	ft_stdin(t_info *info)
 	output_hash(info);
 	info->flags->p = 0;
 	info->stdin = 0;
-	ft_strdel(&info->buffer);
+	free_file_info(info);
 }
 
 static void	parse_file(t_info *info)
