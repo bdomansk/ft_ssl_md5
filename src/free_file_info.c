@@ -12,7 +12,7 @@
 
 #include "ft_ssl.h"
 
-void	free_data(t_info *info)
+static void	free_data(t_info *info)
 {
 	if (info->data)
 		free(info->data);
@@ -22,13 +22,24 @@ void	free_data(t_info *info)
 		free(info->data64);
 }
 
-void	free_file_info(t_info *info)
+void		free_file_info(t_info *info)
 {
 	t_file	*file;
 
 	file = info->files;
 	info->files = file->next;
 	free(file);
+	free(info->result);
+	ft_strdel(&info->buffer);
+	info->buffer = NULL;
+	info->error = NULL;
+	info->result = NULL;
+	info->length = 0;
+	free_data(info);
+}
+
+void		free_stdin(t_info *info)
+{
 	free(info->result);
 	ft_strdel(&info->buffer);
 	info->buffer = NULL;

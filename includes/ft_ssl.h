@@ -16,7 +16,7 @@
 # include <fcntl.h>
 # include <errno.h>
 
-# define LEAKS 1
+# define LEAKS 0
 # define NUMBER_OF_ALGORITHMS 5
 
 typedef struct	s_algorithm
@@ -109,6 +109,7 @@ void			read_file(t_info *info);
 void			read_stdin(t_info *info);
 void			output_hash(t_info *info);
 void			free_file_info(t_info *info);
+void			free_stdin(t_info *info);
 void			md5(void *data);
 void			md5_move_blocks(t_info *info, uint32_t position);
 void			md5_set_result(t_info *info);
