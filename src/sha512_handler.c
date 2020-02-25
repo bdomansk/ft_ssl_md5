@@ -22,7 +22,7 @@ void		sha512_fill_block(t_info *info, int position)
 	i = 16;
 	info->block64->w = (uint64_t *)malloc(80 * 8 * sizeof(uint64_t));
 	ft_bzero(info->block64->w, sizeof(uint64_t) * 640);
-	ft_memcpy(info->block64->w, &(info->data[16 * position]), 640);
+	ft_memcpy(info->block64->w, &(info->data64[16 * position]), 1280);
 	while (i < 80)
 	{
 		info->t0 = rotr64(info->block64->w[i - 15], 1);
@@ -68,7 +68,7 @@ static void	sha512_prepare_blocks(t_info *info)
 	int			i;
 
 	i = 0;
-	while (i < 64)
+	while (i < 80)
 	{
 		info->t0 = rotr64(info->block64->e, 14);
 		info->t1 = rotr64(info->block64->e, 18);

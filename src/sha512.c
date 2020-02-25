@@ -28,21 +28,21 @@ void	sha512_fill_message2(t_info *info, uint64_t length)
 {
 	size_t		i;
 
-	ft_bzero(info->data, 16 * info->size * sizeof(uint64_t));
+	ft_bzero(info->data64, 16 * info->size * sizeof(uint64_t));
 	i = 0;
 	while (i < info->length)
 	{
-		((char *)info->data)[i] = info->buffer[i];
+		((char *)info->data64)[i] = info->buffer[i];
 		i++;
 	}
-	((char*)info->data)[info->length] = 0x80;
+	((char*)info->data64)[info->length] = 0x80;
 	i = 0;
 	while (i < (info->size * 16))
 	{
-		info->data[i] = swap_bits_64((uint64_t)info->data[i]);
+		info->data64[i] = swap_bits_64((uint64_t)info->data64[i]);
 		i++;
 	}
-	info->data[length / 64 + 1] = (uint64_t)info->length * 8;
+	info->data64[length / 64 + 1] = (uint64_t)info->length * 8;
 }
 
 void	sha512_fill_message(t_info *info)
@@ -53,8 +53,8 @@ void	sha512_fill_message(t_info *info)
 	while (message_length % 1024 != 896)
 		message_length++;
 	info->size = (128 + message_length) / 1024;
-	info->data = malloc(16 * info->size * sizeof(uint64_t));
-	if (info->data)
+	info->data64 = malloc(16 * info->size * sizeof(uint64_t));
+	if (info->data64)
 		sha512_fill_message2(info, message_length);
 }
 
